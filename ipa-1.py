@@ -113,6 +113,8 @@ def interest(principal, rate, periods):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
+    import math
+    
     principal = int(principal)
     rate = float(rate)
     periods = int(periods)
