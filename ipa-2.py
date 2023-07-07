@@ -39,6 +39,11 @@ def shift_letter(letter, shift):
 
     str = alphabet[move]
 
+    if letter == " ":
+        str = " "
+
+    return str
+
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
     10 points.
@@ -277,28 +282,14 @@ def scytale_decipher(message, shift):
     message = message.upper()
     length = len(message)
     
-    new_str = ""
+    str = ""
     column = int(length/shift)
     start = 0
     
     while start <= shift-1:
         for index in range(0,column):
-            new_str += message[index*shift+start]
+            str += message[index*shift+start]
         
         start += 1
-    
-    str = ""
-    
-    for letter in range(0,length):
-        if new_str[letter] == "_":
-            str += " "
-        else:
-            str += new_str[letter]
-        
-    #to remove excess space
-    counter = 1       
-    while str[len(str)-counter] == " ":
-        str = str[0:len(str)-counter]
-        counter += 1
     
     return str
