@@ -1,10 +1,3 @@
-'''Individual Programming Assignment 2
-
-70 points
-
-This assignment will develop your proficiency with Python's control flows.
-'''
-
 def shift_letter(letter, shift):
     '''Shift Letter.
     5 points.

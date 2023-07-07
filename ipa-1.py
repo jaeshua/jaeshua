@@ -1,10 +1,3 @@
- '''Individual Programming Assignment 1
-
-20 points
-
-This assignment will develop your basic familiarity with Python.
-'''
-
 def savings(gross_pay, tax_rate, expenses):
     '''Savings.
     5 points.
