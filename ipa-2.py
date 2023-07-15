@@ -112,7 +112,7 @@ def shift_by_letter(letter, letter_shift):
     letter = letter.upper()
     letter_shift = letter_shift.upper()
     pos1 = alphabet.find(letter)
-    pos2 = (alphabet.find(letter_shift))+1
+    pos2 = (alphabet.find(letter_shift))
     
     if letter == " ":
         return " "
@@ -156,21 +156,15 @@ def vigenere_cipher(message, key):
     key = key.upper()
     length_message = len(message)
     length_key = len(key)
-    
-    if ' ' in key:
-        return "Input a key with no spaces."
+    new_key = ""
     
     if length_message > length_key:
-        key = int((length_message/length_key)+1)*key
-        new_key = ""
-        for letter in range(0,length_message):
-            new_key += key[letter]
-
+        while len(new_key) <= length_message:
+            for letter in range(0,length_key):
+                new_key += key[letter]
     else:
-        new_key = ""
-        for letter in range(0,length_message):
-            new_key += key[letter]
-
+        new_key = key
+        
     pos1 = alphabet.find(message)
     str=""
     
@@ -179,10 +173,10 @@ def vigenere_cipher(message, key):
             converted_letter = " "
             str += converted_letter
         else:
-            shift = alphabet.find(new_key[index])+1
+            shift = alphabet.find(new_key[index])
             converted_letter = alphabet[(alphabet.find(message[index])+shift)%26]
             str += converted_letter
-            
+
     return str
 
 def scytale_cipher(message, shift):
