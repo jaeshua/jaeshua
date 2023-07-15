@@ -32,8 +32,8 @@ def savings(gross_pay, tax_rate, expenses):
     tax_rate = float(tax_rate)
     expenses = int(expenses)
 
-    net_pay = gross_pay - math.floor(gross_pay * tax_rate)
-    final_savings = net_pay - expenses  
+    net_pay = gross_pay - gross_pay * tax_rate
+    final_savings = math.floor(net_pay - expenses)  
     return final_savings
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
@@ -150,15 +150,11 @@ def body_mass_index(weight, height):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    weight = float(weight)
-    height = [foot, inch]
-    foot = int(foot)
-    inch = int(inch)
-    height_1 = foot * 30.48
-    height_2 = inch * 2.54
+    lbs = float(weight)
+    inches = height[0]*12+height[1]
 
-    weight_kg = weight * 0.453592
-    height_cm = height_1 + height_2
-
-    BMI = weight / height_cm ** 2
-    return BMI
+    meters = inches/39.37
+    kg = lbs/2.2
+    bmi = float(kg/(meters ** 2))
+    
+    return bmi
