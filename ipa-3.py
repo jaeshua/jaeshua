@@ -161,29 +161,32 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
         
-    routes = list(route_map.keys())
-    time = list(route_map.values())
+    try:
+        return(route_map[first_stop, second_stop]["travel_time_mins"])
+    except:
+        
+        routes = {}
+        travel_time = []
 
-    int = 0
-    restart = True
-    
-    while restart == True:
-        for x in range(0,len(routes)):
-            if first_stop == routes[x][0] and second_stop == routes[x][1] and int == 0: #stops loop if second_stop is within the same key
-                int += time[x]["travel_time_mins"]
-                break
+        for route in route_map :
+            if route[0] == first_stop :
+                first_index = list(route_map).index(route)
 
-            elif first_stop == routes[x][0]: 
-                int += time[x]["travel_time_mins"]
-                continue
+        for route in route_map :
+            if route[1] == second_stop :
+                second_index = list(route_map).index(route)
 
-            if int != 0: #to avoid adding routes before starting point
-                if second_stop != routes[x][1]:
-                    int += time[x]["travel_time_mins"]
+        tempList = list(dict.keys(route_map))
 
-                elif second_stop == routes[x][1]:
-                    int += time[x]["travel_time_mins"]
-                    restart = False
-                    break  
-            
-    return int
+        total_time = 0
+        while (first_index % len(tempList) != second_index):
+            startKey = tempList[first_index % len(tempList)]
+            total_time += route_map[startKey]["travel_time_mins"]
+            first_index += 1
+
+        if(first_index >= len(tempList)):
+            total_time += route_map[tempList[first_index % len(tempList)]]["travel_time_mins"]
+        else:
+            total_time += route_map[tempList[first_index]]["travel_time_mins"]
+        
+    return(total_time)
